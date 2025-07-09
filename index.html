@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <title>By EA Gaming</title>
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <meta content="" name="keywords" />
+    <meta
+      content="height=device-height, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, target-densitydpi=device-dpi"
+      name="viewport"
+    />
+    <link href="css/bootstrap.min.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="css/style-dark.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="css/css.css" rel="stylesheet" />
+    <link href="css/fontawesome-all.min.css" media="all" rel="stylesheet" type="text/css" />
+    <link
+      href="css/colors/yellow-2.css"
+      media="screen"
+      rel="stylesheet"
+      title="yellow-2"
+      type="text/css"
+    />
+    <link
+      href="http://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900%7CDosis:200,300,400,500,600,700,800%7COswald:300,400,700%7CMontserrat:400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+
+  <body>
+    <!-- Otomatik açılan duyuru popup'u -->
+    <div
+      id="announcementModal"
+      style="
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.8);
+        justify-content: center;
+        align-items: center;
+        z-index: 10000;
+      "
+    >
+      <div
+        style="
+          background: #222;
+          color: #fff;
+          padding: 30px;
+          border-radius: 15px;
+          max-width: 450px;
+          width: 90vw;
+          text-align: center;
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        <h2 style="font-size: 1.8rem; margin-bottom: 15px;">Duyuru</h2>
+        <p>
+          Discord sunucumuza katılarak en son haberleri takip edin!<br />
+          Sınırsız yetki fiyatlarımız discord adresimizde yazıyor.<br />
+          Sitemiz yakında sınırsız fiyatlar eklenecektir.
+        </p>
+        <a
+          href="https://discord.gg/byeagaming"
+          target="_blank"
+          style="
+            background: #5865f2;
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            display: inline-block;
+          "
+          >Discord Sunucusuna Git</a
+        >
+        <button
+          onclick="document.getElementById('announcementModal').style.display='none'"
+          style="
+            background: #444;
+            border: none;
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 15px;
+          "
+        >
+          Kapat
+        </button>
+      </div>
+    </div>
+
+    <div class="film-grain"></div>
+
+    <div id="preloader">
+      <div id="preloader-status">
+        <div class="preloader-position preloader-effect">
+          <span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-fullscreen hero-bg">
+      <div class="slide-YT hero-fullscreen">
+        <div class="slide bg-img-YT"></div>
+        <div id="videoContainment"></div
+        ><a
+          class="player"
+          data-property="{videoURL:'https://www.youtube.com/watch?v=82q5BcoVwRE&t=4s', mute:true, showControls:false, quality:'default', opacity:0.5, containment:'#videoContainment', optimizeDisplay:true, loop:true, startAt:0, autoPlay:true, showYTLogo:false, addRaster:false, realfullscreen:true}"
+          id="bgndVideo"
+        ></a>
+      </div>
+      <div class="preload-content"></div>
+    </div>
+
+    <div class="menu-trigger top-position" id="menu">
+      <button
+        class="lines-button minus menu-toggle"
+        id="main-menu-caller"
+        type="button"
+      >
+        <span class="lines"></span>
+      </button>
+    </div>
+
+    <svg id="cursor" width="20" height="20">
+      <defs>
+        <linearGradient id="gradient" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="white"></stop>
+          <stop offset="100%" stop-color="white"></stop>
+        </linearGradient>
+      </defs>
+      <circle r="07" cx="10" cy="10" fill="none"></circle>
+      <line x1="0" y1="0" x2="20" y2="20"></line>
+      <line x1="0" y1="20" x2="20" y2="0"></line>
+    </svg>
+
+    <div id="ui-layer">
+      <div id="menu-wrapper">
+        <div id="main-menu">
+          <div class="menu-nav-wrapper">
+            <nav class="menu-nav">
+              <ul class="brackets">
+                <li class="menu">
+                  <a class="menu-state active" href="#" id="fire-home"
+                    >Ana Sayfa</a
+                  >
+                </li>
+                <li class="menu">
+                  <a class="menu-state" href="#" id="fire-services">Founders</a>
+                </li>
+                <li class="menu">
+                  <a class="menu-state" href="#" id="fire-contact">Yetkiler</a>
+                </li>
+                <li class="menu credits">
+                  <a href="#">Yawrumbenalisan&copy;#2025</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="upper-page current" id="home">
+      <div class="line-left left-position"></div>
+
+      <div class="line-right right-position">
+        <a href="#">Yawrumbenalisan&copy;#2025</a>
+      </div>
+
+      <div class="transparent-borders OFF"></div>
+      <div class="center-container-home">
+        <div class="center-block-home">
+          <div class="upper-content">
+            <div class="container sections">
+              <div class="row">
+                <div class="fin-wrapper introduction">
+                  <div class="fin-slides-wrapper">
+                    <ul class="fin-slides">
+                      <li>
+                        <h3>By EA Gaming</h3>
+                      </li>
+                      <li>
+                        <h3>Bir Freeroam Hikayesi</h3>
+                      </li>
+                      <li>
+                        <h3>discord.gg/byeagaming</h3>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="fin-heading">
+                    <h1 class="fin-heading">Kalitenin Tek Adresi</h1>
+                  </div>
+                  <div class="fin-subheading">
+                    &middot; Freeroam &middot;
+                    <audio
+                      id="loading"
+                      src="music/music.wav"
+                      autoplay="true"
+                      hidden="true"
+                      loop="true"
+                    ></audio>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lower-page" id="services">
+      <div class="center-container">
+        <div class="center-block">
+          <div class="lower-content">
+            <div class="container sections">
+              <div class="row">
+                <h4>//</h4>
+                <h2>
+                  Sahipleri <span class="get-behind">Sunucu</span>
+                </h2>
+              </div>
+
+              <div class="row">
+                <div class="dividerOT"></div>
+              </div>
+
+              <div class="services-columns">
+                <div class="row">
+                  <div class="col-md-6 services-padding mb40">
+                    <h5>
+                      <span class="awesome">Server Sahipleri</span>
+                    </h5>
+                    <p>yawrumbenalisan , eaperformance.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lower-page" id="contact">
+      <div class="center-container">
+        <div class="center-block">
+          <div class="lower-content">
+            <div class="container sections">
+              <div class="row">
+                <h4>//</h4>
+                <h2>
+                  Mağaza<span class="get-behind">By EA</span>
+                </h2>
+              </div>
+              <div class="row">
+                <div class="dividerOT"></div>
+              </div>
+              <div class="row product-list">
+                <div class="col-md-4 product-item">
+                  <div class="product-inner">
+                    <h3>Moderatör</h3>
+                    <h3>100₺</h3>
+                    <img
+                      src="img/urun1.png"
+                      alt="Ürün 1"
+                      class="product-image"
+                    />
+                    <p>Aylık</p>
+                    <button
+                      class="buy-button"
+                      onclick="satinal('Moderatör', 100)"
+                    >
+                      Satın Al
+                    </button>
+                  </div>
+                </div>
+                <div class="col-md-4 product-item">
+                  <div class="product-inner">
+                    <h3>Süper Moderatör</h3>
+                    <h3>150₺</h3>
+                    <img
+                      src="img/urun2.png"
+                      alt="Ürün 2"
+                      class="product-image"
+                    />
+                    <p>Aylık</p>
+                    <button
+                      class="buy-button"
+                      onclick="satinal('Süper Moderatör', 150)"
+                    >
+                      Satın Al
+                    </button>
+                  </div>
+                </div>
+                <div class="col-md-4 product-item">
+                  <div class="product-inner">
+                    <h3>Admin</h3>
+                    <h3>250₺</h3>
+                    <img
+                      src="img/urun3.png"
+                      alt="Ürün 3"
+                      class="product-image"
+                    />
+                    <p>Aylık</p>
+                    <button
+                      class="buy-button"
+                      onclick="satinal('Admin', 250)"
+                    >
+                      Satın Al
+                    </button>
+                  </div>
+                </div>
+                <div class="col-md-4 product-item">
+                  <div class="product-inner">
+                    <h3>Genel Sorumlu</h3>
+                    <h3>400₺</h3>
+                    <img
+                      src="img/urun4.png"
+                      alt="Ürün 4"
+                      class="product-image"
+                    />
+                    <p>Aylık</p>
+                    <button
+                      class="buy-button"
+                      onclick="satinal('Genel Sorumlu', 400)"
+                    >
+                      Satın Al
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Satın alma modal -->
+              <div
+                id="modal"
+                style="
+                  display: none;
+                  position: fixed;
+                  top: 0;
+                  left: 0;
+                  width: 100vw;
+                  height: 100vh;
+                  background: rgba(0, 0, 0, 0.8);
+                  justify-content: center;
+                  align-items: center;
+                  z-index: 9999;
+                  font-size: 14px;
+                "
+              >
+                <div
+                  style="
+                    background: #222;
+                    color: #fff;
+                    padding: 20px;
+                    border-radius: 12px;
+                    max-width: 400px;
+                    text-align: center;
+                    position: relative;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                  "
+                >
+                  <h2 id="modal-title" style="font-size: 18px; margin-bottom: 12px"></h2>
+                  <p
+                    id="modal-text"
+                    style="font-size: 14px; margin-bottom: 20px"
+                  ></p>
+                  <p
+                    style="
+                      font-family: monospace;
+                      font-weight: bold;
+                      background: #333;
+                      padding: 10px;
+                      border-radius: 8px;
+                      user-select: all;
+                      margin-bottom: 12px;
+                    "
+                  >
+                    Papara IBAN: TR840082900009492051810249
+                  </p>
+                  <p style="margin-bottom: 12px">
+                    <strong>Alıcı Adı:</strong> Mesim Efe Selçuk
+                  </p>
+                  <p style="margin-bottom: 20px">
+                    Ödeme yaptıktan sonra Discord sunucumuza gelin ve yetkinizi talep edin.
+                  </p>
+                  <a
+                    href="https://discord.gg/byeagaming"
+                    target="_blank"
+                    style="
+                      display: inline-block;
+                      background: #5865f2;
+                      padding: 10px 25px;
+                      color: #fff;
+                      border-radius: 8px;
+                      text-decoration: none;
+                      font-weight: bold;
+                    "
+                    >Discord Sunucusuna Git</a
+                  >
+                  <button
+                    onclick="kapatModal()"
+                    style="
+                      position: absolute;
+                      top: 10px;
+                      right: 15px;
+                      background: none;
+                      border: none;
+                      color: #fff;
+                      font-size: 22px;
+                      cursor: pointer;
+                    "
+                  >
+                    &times;
+                  </button>
+                </div>
+              </div>
+
+              <script>
+                // Satın alma popup açma fonksiyonu
+                function satinal(yetki, fiyat) {
+                  document.getElementById("modal-title").textContent =
+                    yetki + " Yetkisi Satın Alma";
+                  document.getElementById("modal-text").textContent =
+                    fiyat +
+                    "₺ tutarındaki satın alma işlemi için aşağıdaki IBAN'a ödeme yapınız:";
+                  document.getElementById("modal").style.display = "flex";
+                }
+                function kapatModal() {
+                  document.getElementById("modal").style.display = "none";
+                }
+
+                // Sayfa yüklendiğinde duyuruyu göster
+                window.addEventListener("load", function () {
+                  document.getElementById("announcementModal").style.display = "flex";
+                });
+              </script>
+
+              <style>
+                .product-list {
+                  display: flex;
+                  flex-wrap: wrap;
+                  justify-content: center;
+                  align-items: stretch;
+                }
+                .product-item {
+                  width: 30%;
+                  text-align: center;
+                  padding: 30px;
+                  border: 1px solid #ccc;
+                  border-radius: 10px;
+                  margin: 15px;
+                  background-color: transparent;
+                  transition: background-color 0.3s;
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                  min-height: 350px;
+                }
+                .product-item:hover {
+                  background-color: rgba(0, 0, 255, 0.1);
+                }
+                .product-inner {
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                  align-items: center;
+                  height: 100%;
+                }
+                .product-image {
+                  width: 80%;
+                  height: auto;
+                  border-radius: 10px;
+                }
+                .buy-button {
+                  background-color: rgba(0, 0, 255, 1);
+                  border: none;
+                  padding: 10px;
+                  cursor: pointer;
+                  border-radius: 5px;
+                  color: white;
+                  transition: background 0.5s, opacity 0.5s;
+                }
+                @keyframes rgbEffect {
+                  0% {
+                    background: red;
+                  }
+                  25% {
+                    background: blue;
+                  }
+                  50% {
+                    background: green;
+                  }
+                  75% {
+                    background: yellow;
+                  }
+                  100% {
+                    background: red;
+                  }
+                }
+                .buy-button:hover {
+                  animation: rgbEffect 1s infinite;
+                }
+              </style>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var play = false;
+      var vid = document.getElementById("loading");
+      vid.volume = 0.1;
+      window.addEventListener("keyup", function (e) {
+        if (e.which == 69) {
+          vid.volume = Math.min(vid.volume + 0.1, 1);
+        } else if (e.which == 65) {
+          vid.volume = Math.max(vid.volume - 0.1, 0);
+        }
+      });
+
+      var audio = document.querySelector("audio");
+
+      if (audio) {
+        window.addEventListener("keydown", function (event) {
+          var key = event.which || event.keyCode;
+
+          if (key === 32) {
+            // spacebar
+            event.preventDefault();
+
+            audio.paused ? audio.play() : audio.pause();
+          }
+        });
+      }
+    </script>
+    <script
+      src="https://code.jquery.com/jquery-2.1.1.min.js"
+      type="text/javascript"
+    ></script>
+    <script src="js/plugins.js" type="text/javascript"></script>
+    <script src="js/main.js" type="text/javascript"></script>
+  </body>
+</html>
